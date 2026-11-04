@@ -1,0 +1,8 @@
+.env
+*.db
+__pycache__/
+*.pyc
+bot.py
+bot_backup.py
+database.py
+web/
