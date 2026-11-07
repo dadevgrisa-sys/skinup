@@ -470,3 +470,8 @@ body {
         height: 32px;
     }
 }
+
+.live-heading b {
+    display: inline-block;
+    transform: rotate(180deg);
+}
