@@ -380,3 +380,93 @@ body {
         height: 125px;
     }
 }
+
+/* SKIN UP — новый верхний интерфейс */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0 -4px 35px;
+    padding: 14px 0;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #ffd34e;
+    position: relative;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    background: #1b2038;
+    border: 1px solid #343b60;
+    border-radius: 40px;
+    padding: 12px 13px;
+    font-size: 15px;
+    min-height: 48px;
+}
+
+.topup {
+    background: linear-gradient(110deg, #5865f2, #9848f5);
+    color: #fff;
+    border: 1px solid #a18aff;
+    border-radius: 40px;
+    padding: 14px 18px;
+    min-height: 48px;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 0 18px #7954f455;
+}
+
+.header-actions::after {
+    content: "";
+    display: block;
+    flex-shrink: 0;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e18af7, #a64fe8);
+    border: 2px solid #d68bfa;
+}
+
+@media (max-width: 380px) {
+    .logo {
+        font-size: 21px;
+    }
+
+    .header-actions {
+        gap: 5px;
+    }
+
+    .balance {
+        padding: 10px 9px;
+        font-size: 13px;
+    }
+
+    .topup {
+        padding: 12px 11px;
+        font-size: 12px;
+    }
+
+    .header-actions::after {
+        width: 32px;
+        height: 32px;
+    }
+}
