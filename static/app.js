@@ -5,41 +5,29 @@ tg.expand();
 
 const BOT_USERNAME = "SkinUpCaseBot";
 
-const gifts = [
-    {
-        name: "Golden Rose",
-        rarity: "Легендарный",
-        type: "legendary",
-        model: "Gold",
-        background: "Purple",
-        symbol: "Rose",
-        number: "#0001",
-        art: "🌹",
-        artClass: "art-rose"
-    },
-    {
-        name: "Royal Bear",
-        rarity: "Редкий",
-        type: "rare",
-        model: "Royal",
-        background: "Brown",
-        symbol: "Bear",
-        number: "#0024",
-        art: "🧸",
-        artClass: "art-bear"
-    },
-    {
-        name: "Blue Diamond",
-        rarity: "Обычный",
-        type: "common",
-        model: "Blue",
-        background: "Ocean",
-        symbol: "Diamond",
-        number: "#0108",
-        art: "💎",
-        artClass: "art-gem"
-    }
-];
+let gifts = [];
+
+fetch("./gifts.json")
+    .then(response => response.json())
+    .then(data => {
+        gifts = data.map((gift, index) => ({
+            id: gift.id,
+            name: "Telegram Gift #" + (index + 1),
+            rarity: "Подарок Telegram",
+            type: "common",
+            model: "Не указан",
+            background: "Не указан",
+            symbol: "Gift",
+            number: "#" + (index + 1),
+            art: "🎁",
+            artClass: "art-gem",
+            star_count: gift.star_count,
+            sticker: gift.sticker
+        }));
+
+        console.log("Загружено подарков:", gifts.length);
+    })
+    .catch(error => console.error("Ошибка загрузки подарков:", error));
 
 function showGift(index) {
     const gift = gifts[index];
@@ -141,3 +129,29 @@ function showTab(tab) {
 
 document.getElementById("itemCount").textContent =
     gifts.length + " предмета";
+
+// Добавление нового события в LIVE
+window.addLiveEvent = function(event) {
+    const track = document.getElementById("liveTrack");
+    if (!track || !event) return;
+
+    const card = document.createElement("div");
+    card.className = "live-item new-live";
+
+    const gift = document.createElement("span");
+    gift.className = "live-gift";
+    gift.textContent = event.art || "🎁";
+
+    const info = document.createElement("div");
+
+    const username = document.createElement("b");
+    username.textContent = event.username || "Пользователь";
+
+    const giftName = document.createElement("strong");
+    giftName.textContent = event.gift || "Подарок";
+
+    info.append(username, giftName);
+    card.append(gift, info);
+
+    track.insertBefore(card, track.firstChild);
+};

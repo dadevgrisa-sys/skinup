@@ -475,3 +475,129 @@ body {
     display: inline-block;
     transform: rotate(180deg);
 }
+
+/* SKIN UP LIVE — горизонтальная лента */
+
+.live-section {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 18px 0 25px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    overflow: hidden;
+}
+
+.live-label {
+    flex: 0 0 58px;
+    min-height: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(160deg, #292f50, #171b31);
+    border: 2px solid #41496d;
+    border-radius: 30px;
+    color: white;
+}
+
+.live-label b {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 23px;
+    letter-spacing: 2px;
+}
+
+.live-label .live-dot {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+    border-radius: 50%;
+    background: #20d69a;
+    box-shadow: 0 0 12px #20d69a;
+}
+
+.live-track {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.live-track::-webkit-scrollbar {
+    display: none;
+}
+
+.live-item {
+    flex: 0 0 260px;
+    min-height: 112px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    background: linear-gradient(120deg, #263d79, #202b50);
+    border: 2px solid #536da9;
+    border-radius: 28px;
+    color: white;
+    overflow: hidden;
+}
+
+.live-gift {
+    flex: 0 0 75px;
+    font-size: 58px;
+    text-align: center;
+}
+
+.live-item div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.live-item b {
+    color: #dce6ff;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+.live-item strong {
+    color: #35d9a0;
+    font-size: 19px;
+    white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    .live-label {
+        flex-basis: 48px;
+    }
+
+    .live-item {
+        flex-basis: 225px;
+    }
+}
+
+@keyframes liveSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-45px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.live-item.new-live {
+    animation: liveSlideIn 0.55s ease-out;
+}
