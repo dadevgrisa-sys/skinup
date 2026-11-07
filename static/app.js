@@ -100,21 +100,24 @@ function topUp() {
 }
 
 function showTab(tab) {
-    const messages = {
-        home: "Главная SKIN UP",
-        cases: "🎁 Раздел кейсов скоро появится.",
-        inventory: "💎 Твоя коллекция подарков.",
-        profile: "👤 Профиль скоро появится."
-    };
+    const pages = document.querySelectorAll(".page");
 
-    tg.showAlert(messages[tab] || "Раздел готовится.");
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const selectedPage = document.getElementById("page-" + tab);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
 
     document.querySelectorAll(".nav-btn").forEach(button => {
         button.classList.remove("active");
     });
 
     const indexes = {
-        home: 0,
+        games: 0,
         cases: 1,
         inventory: 2,
         profile: 3
@@ -126,32 +129,3 @@ function showTab(tab) {
         buttons[indexes[tab]].classList.add("active");
     }
 }
-
-document.getElementById("itemCount").textContent =
-    gifts.length + " предмета";
-
-// Добавление нового события в LIVE
-window.addLiveEvent = function(event) {
-    const track = document.getElementById("liveTrack");
-    if (!track || !event) return;
-
-    const card = document.createElement("div");
-    card.className = "live-item new-live";
-
-    const gift = document.createElement("span");
-    gift.className = "live-gift";
-    gift.textContent = event.art || "🎁";
-
-    const info = document.createElement("div");
-
-    const username = document.createElement("b");
-    username.textContent = event.username || "Пользователь";
-
-    const giftName = document.createElement("strong");
-    giftName.textContent = event.gift || "Подарок";
-
-    info.append(username, giftName);
-    card.append(gift, info);
-
-    track.insertBefore(card, track.firstChild);
-};

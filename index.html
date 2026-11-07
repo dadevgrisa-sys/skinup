@@ -40,76 +40,61 @@
 
 
         <main>
-            <section class="welcome">
-                <p class="subtitle">DIGITAL COLLECTIBLES</p>
-                <h1>Твоя коллекция.<br><span>Твоя уникальность.</span></h1>
-                <p class="muted">Собирай редкие цифровые предметы.</p>
-            </section>
-
-            <section class="collection">
+            <section class="page active" id="page-games">
                 <div class="section-title">
                     <div>
-                        <p class="subtitle">YOUR INVENTORY</p>
-                        <h2>Коллекция</h2>
+                        <p class="subtitle">SKIN UP ARCADE</p>
+                        <h2>Игры</h2>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">⚡</div>
+                    <h3>Апгрейд</h3>
+                    <p>Улучшай свою коллекцию и изучай варианты обмена подарков.</p>
+                    <button class="main-btn" onclick="openUpgrade()">Открыть</button>
+                </div>
+            </section>
+
+            <section class="page" id="page-cases">
+                <div class="section-title">
+                    <div>
+                        <p class="subtitle">NFT CASES</p>
+                        <h2>Кейсы</h2>
+                    </div>
+                </div>
+                <div class="cards" id="casesGrid"></div>
+            </section>
+
+            <section class="page" id="page-inventory">
+                <div class="section-title">
+                    <div>
+                        <p class="subtitle">YOUR ITEMS</p>
+                        <h2>Инвентарь</h2>
                     </div>
                     <span class="count" id="itemCount">0 предметов</span>
                 </div>
-
-                <div class="filters">
-                    <button class="filter active" onclick="filterItems('all', this)">Все</button>
-                    <button class="filter" onclick="filterItems('legendary', this)">Легендарные</button>
-                    <button class="filter" onclick="filterItems('rare', this)">Редкие</button>
-                    <button class="filter" onclick="filterItems('common', this)">Обычные</button>
-                </div>
-
-                <div class="cards" id="collectionGrid">
-                    <article class="gift-card legendary" onclick="showGift(0)">
-                        <div class="gift-art art-rose">🌹</div>
-                        <div class="gift-info">
-                            <h3>Golden Rose</h3>
-                            <p>Легендарный</p>
-                            <span>#0001</span>
-                        </div>
-                    </article>
-
-                    <article class="gift-card rare" onclick="showGift(1)">
-                        <div class="gift-art art-bear">🧸</div>
-                        <div class="gift-info">
-                            <h3>Royal Bear</h3>
-                            <p>Редкий</p>
-                            <span>#0024</span>
-                        </div>
-                    </article>
-
-                    <article class="gift-card common" onclick="showGift(2)">
-                        <div class="gift-art art-gem">💎</div>
-                        <div class="gift-info">
-                            <h3>Blue Diamond</h3>
-                            <p>Обычный</p>
-                            <span>#0108</span>
-                        </div>
-                    </article>
-                </div>
+                <div class="cards" id="collectionGrid"></div>
             </section>
 
-            <section class="daily">
-                <div class="daily-top">
-                    <span>🎁 ЕЖЕДНЕВНЫЙ КЕЙС</span>
-                    <span class="free">FREE</span>
+            <section class="page" id="page-profile">
+                <div class="section-title">
+                    <div>
+                        <p class="subtitle">YOUR ACCOUNT</p>
+                        <h2>Профиль</h2>
+                    </div>
                 </div>
-                <div class="gift">🎁</div>
-                <h2>Daily Case</h2>
-                <p>Пригласи 3 друзей и открой ежедневный кейс.</p>
-                <button class="main-btn" onclick="openReferral()">
-                    Открыть кейс
-                </button>
+                <div class="game-card">
+                    <div class="game-icon">👤</div>
+                    <h3 id="profileName">Игрок SKIN UP</h3>
+                    <p>Твой профиль и статистика появятся здесь.</p>
+                </div>
             </section>
         </main>
 
         <nav class="navigation">
-            <button class="nav-btn active" onclick="showTab('home')">⌂<small>Главная</small></button>
+            <button class="nav-btn active" onclick="showTab('games')">🎮<small>Игры</small></button>
             <button class="nav-btn" onclick="showTab('cases')">🎁<small>Кейсы</small></button>
-            <button class="nav-btn" onclick="showTab('inventory')">💎<small>Коллекция</small></button>
+            <button class="nav-btn" onclick="showTab('inventory')">💎<small>Инвентарь</small></button>
             <button class="nav-btn" onclick="showTab('profile')">👤<small>Профиль</small></button>
         </nav>
     </div>

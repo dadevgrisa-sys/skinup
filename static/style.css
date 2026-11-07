@@ -601,3 +601,12 @@ body {
 .live-item.new-live {
     animation: liveSlideIn 0.55s ease-out;
 }
+
+/* Переключение страниц */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
